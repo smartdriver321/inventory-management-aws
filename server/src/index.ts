@@ -7,6 +7,7 @@ import morgan from 'morgan'
 
 import dashboardRoutes from './routes/dashboardRoutes'
 import productRoutes from './routes/productRoutes'
+import userRoutes from './routes/userRoutes'
 
 /* CONFIGURATIONS */
 dotenv.config()
@@ -24,6 +25,7 @@ app.use(morgan('common'))
 /* API ROUTES */
 app.use('/dashboard', dashboardRoutes) // http://localhost:8000/dashboard
 app.use('/products', productRoutes) // http://localhost:8000/products
+app.use('/users', userRoutes) // http://localhost:8000/users
 
 /* SERVER */
 app.listen(port, '0.0.0.0', () => {
