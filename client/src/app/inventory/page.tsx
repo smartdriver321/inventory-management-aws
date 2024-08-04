@@ -3,6 +3,7 @@
 import { DataGrid, GridColDef } from '@mui/x-data-grid'
 
 import { useGetProductsQuery } from '@/state/api'
+import Header from '../(components)/Header'
 
 const columns: GridColDef[] = [
 	{ field: 'productId', headerName: 'ID', width: 90 },
@@ -46,7 +47,7 @@ export default function Inventory() {
 
 	return (
 		<div className='flex flex-col'>
-			Header
+			<Header name='Inventory' />
 			<DataGrid
 				rows={products}
 				columns={columns}
