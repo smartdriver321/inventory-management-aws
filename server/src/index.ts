@@ -5,8 +5,8 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 
-/* API ROUTES */
 import dashboardRoutes from './routes/dashboardRoutes'
+import productRoutes from './routes/productRoutes'
 
 /* CONFIGURATIONS */
 dotenv.config()
@@ -21,8 +21,9 @@ app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }))
 app.use(morgan('common'))
 
-/* ROUTES */
+/* API ROUTES */
 app.use('/dashboard', dashboardRoutes) // http://localhost:8000/dashboard
+app.use('/products', productRoutes) // http://localhost:8000/products
 
 /* SERVER */
 app.listen(port, '0.0.0.0', () => {
