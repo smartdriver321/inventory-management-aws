@@ -15,7 +15,9 @@ import { useGetDashboardMetricsQuery } from '@/state/api'
 export default function CardSalesSummary() {
 	const { data, isLoading, isError } = useGetDashboardMetricsQuery()
 	const salesData = data?.salesSummary || []
+
 	const [timeframe, setTimeframe] = useState('weekly')
+
 	const totalValueSum =
 		salesData.reduce((acc, curr) => acc + curr.totalValue, 0) || 0
 
@@ -72,6 +74,7 @@ export default function CardSalesSummary() {
 									{averageChangePercentage.toFixed(2)}%
 								</span>
 							</div>
+
 							<select
 								className='shadow-sm border border-gray-300 bg-white p-2 rounded'
 								value={timeframe}
@@ -84,6 +87,7 @@ export default function CardSalesSummary() {
 								<option value='monthly'>Monthly</option>
 							</select>
 						</div>
+
 						{/* CHART */}
 						<ResponsiveContainer width='100%' height={350} className='px-7'>
 							<BarChart
@@ -98,6 +102,7 @@ export default function CardSalesSummary() {
 										return `${date.getMonth() + 1}/${date.getDate()}`
 									}}
 								/>
+
 								<YAxis
 									tickFormatter={(value) => {
 										return `$${(value / 1000000).toFixed(0)}m`
@@ -106,6 +111,7 @@ export default function CardSalesSummary() {
 									tickLine={false}
 									axisLine={false}
 								/>
+
 								<Tooltip
 									formatter={(value: number) => [
 										`$${value.toLocaleString('en')}`,
@@ -119,6 +125,7 @@ export default function CardSalesSummary() {
 										})
 									}}
 								/>
+
 								<Bar
 									dataKey='totalValue'
 									fill='#3182ce'
