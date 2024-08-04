@@ -14,24 +14,28 @@ export const getDashboardMetrics = async (
 				stockQuantity: 'desc',
 			},
 		})
+
 		const salesSummary = await prisma.salesSummary.findMany({
 			take: 5,
 			orderBy: {
 				date: 'desc',
 			},
 		})
+
 		const purchaseSummary = await prisma.purchaseSummary.findMany({
 			take: 5,
 			orderBy: {
 				date: 'desc',
 			},
 		})
+
 		const expenseSummary = await prisma.expenseSummary.findMany({
 			take: 5,
 			orderBy: {
 				date: 'desc',
 			},
 		})
+
 		const expenseByCategorySummaryRaw = await prisma.expenseByCategory.findMany(
 			{
 				take: 5,
@@ -40,6 +44,7 @@ export const getDashboardMetrics = async (
 				},
 			}
 		)
+
 		const expenseByCategorySummary = expenseByCategorySummaryRaw.map(
 			(item) => ({
 				...item,
