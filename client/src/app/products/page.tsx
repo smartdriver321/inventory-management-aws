@@ -6,6 +6,7 @@ import { PlusCircleIcon, SearchIcon } from 'lucide-react'
 
 import { useGetProductsQuery } from '@/state/api'
 import Header from '@/app/(components)/Header'
+import Rating from '../(components)/Rating'
 
 export default function Products() {
 	const [searchTerm, setSearchTerm] = useState('')
@@ -77,7 +78,9 @@ export default function Products() {
 									Stock: {product.stockQuantity}
 								</div>
 								{product.rating && (
-									<div className='flex items-center mt-2'>Rating</div>
+									<div className='flex items-center mt-2'>
+										<Rating rating={product.rating} />
+									</div>
 								)}
 							</div>
 						</div>
